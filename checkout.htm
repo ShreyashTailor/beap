@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout Page</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1 class="title">Checkout Page</h1>
+        <div class="card-container">
+            <div class="card">
+                <img src="free-trial.png" alt="Free Trial">
+                <h2>5 Days Free Trial</h2>
+                <p>Get started with our free trial for 5 days!</p>
+                <button class="add-to-cart" data-plan="free-trial">Add to Cart</button>
+            </div>
+            <div class="card">
+                <img src="28-days.png" alt="28 Days">
+                <h2>28 Days</h2>
+                <p>Subscribe for 28 days and enjoy our premium features!</p>
+                <button class="add-to-cart" data-plan="28-days">Add to Cart</button>
+            </div>
+            <div class="card">
+                <img src="84-days.png" alt="84 Days">
+                <h2>84 Days</h2>
+                <p>Get access to our premium features for 84 days!</p>
+                <button class="add-to-cart" data-plan="84-days">Add to Cart</button>
+            </div>
+            <div class="card">
+                <img src="365-days.png" alt="365 Days">
+                <h2>365 Days</h2>
+                <p>Subscribe for a year and enjoy our premium features!</p>
+                <button class="add-to-cart" data-plan="365-days">Add to Cart</button>
+            </div>
+        </div>
+        <div class="cart-container">
+            <h2>Cart:</h2>
+            <ul id="cart-list"></ul>
+        </div>
+        <button class="checkout" onclick="checkout()">Checkout with Google Pay</button>
+    </div>
+
+    <script>
+        const cartList = document.getElementById('cart-list');
+        const addToCartButtons = document.querySelectorAll('.add-to-cart');
+
+        let cart = [];
+
+        addToCartButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const plan = button.getAttribute('data-plan');
+                cart.push(plan);
+                updateCartList();
+            });
+        });
+
+        function updateCartList() {
+            cartList.innerHTML = '';
+            cart.forEach(plan => {
+                const listItem = document.createElement('li');
+                listItem.textContent = plan;
+                cartList.appendChild(listItem);
+            });
+        }
+
+        const checkoutButton = document.querySelector('.checkout');
+        checkoutButton.addEventListener('click', () => {
+            // Google Pay API integration code here
+            console.log('Google Pay API integration code here');
+        });
+    </script>
+</body>
+</html>
+
+<script>
+const checkout = () => {
+    console.log('Checkout with Google Pay');
+}
+</script>
